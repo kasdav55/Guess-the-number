@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 48px;
+            color: red;
+        }
+        #game {
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Under Construction</h1>
+    <div id="game">
+        <h2>Guess the Number</h2>
+        <p>I'm thinking of a number between 1 and 100.</p>
+        <input type="number" id="guessInput" placeholder="Enter your guess" min="1" max="100">
+        <button onclick="makeGuess()">Guess</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        let numberToGuess = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function makeGuess() {
+            let userGuess = parseInt(document.getElementById('guessInput').value);
+            let messageElement = document.getElementById('message');
+            attempts++;
+
+            if (userGuess < numberToGuess) {
+                messageElement.textContent = "Your guess is too low. Try again!";
+            } else if (userGuess > numberToGuess) {
+                messageElement.textContent = "Your guess is too high. Try again!";
+            } else {
+                messageElement.textContent = `Congratulations! You've guessed the number in ${attempts} attempts.`;
+            }
+        }
+    </script>
+</body>
+</html>
